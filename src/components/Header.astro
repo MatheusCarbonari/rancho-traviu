@@ -1,28 +1,38 @@
 ---
 const navigationItems = [
-	{ label: 'Início', href: '/' },
-	{ label: 'Rancho', href: '/o-rancho' },
-	{ label: 'Cardápio', href: '/cardapio' },
-	{ label: 'Sua Visita', href: '/sua-visita' },
+	{ label: 'Início', path: '/' },
+	{ label: 'Rancho', path: '/o-rancho' },
+	{ label: 'Cardápio', path: '/cardapio' },
+	{ label: 'Sua Visita', path: '/sua-visita' },
 ] as const;
 
+const baseUrl = import.meta.env.BASE_URL.replace(/\/$/, '');
+const withBase = (path: string) =>
+	`${baseUrl}/${path.replace(/^\/+/, '')}`;
+const normalizePath = (path: string) => path.replace(/\/+$/, '') || '/';
 const currentPath = Astro.url.pathname.replace(/\/+$/, '') || '/';
 ---
 
 <header class="site-header">
 	<div class="site-header__inner">
-		<a class="site-header__brand" href="/" aria-label="Rancho Traviú — início">
+		<a
+			class="site-header__brand"
+			href={withBase('/')}
+			aria-label="Rancho Traviú — início"
+		>
 			Rancho Traviú
 		</a>
 
 		<nav aria-label="Navegação principal">
 			<ul>
 				{
-					navigationItems.map(({ label, href }) => (
+					navigationItems.map(({ label, path }) => (
 						<li>
 							<a
-								href={href}
-								aria-current={currentPath === href ? 'page' : undefined}
+								href={withBase(path)}
+								aria-current={currentPath === normalizePath(withBase(path))
+									? 'page'
+									: undefined}
 							>
 								{label}
 							</a>

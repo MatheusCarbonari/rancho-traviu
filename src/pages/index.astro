@@ -4,6 +4,9 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import gastronomyImage from '../assets/images/banquete_rBAstico_no_rancho.png';
 import heroImage from '../assets/images/Terraço Rústico Sob as Árvores.png';
 import ranchoImage from '../assets/images/Cerveja gelada no rancho rústico.png';
+
+const baseUrl = import.meta.env.BASE_URL.replace(/\/$/, '');
+const suaVisitaUrl = `${baseUrl}/sua-visita`;
 ---
 
 <BaseLayout
@@ -104,7 +107,7 @@ import ranchoImage from '../assets/images/Cerveja gelada no rancho rústico.png'
 				</div>
 			</dl>
 
-			<a class="visit-planning__link" href="/sua-visita">
+			<a class="visit-planning__link" href={suaVisitaUrl}>
 				Planeje sua visita
 			</a>
 		</div>

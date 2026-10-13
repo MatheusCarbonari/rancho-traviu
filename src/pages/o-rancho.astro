@@ -2,6 +2,9 @@
 import { Image } from 'astro:assets';
 import ranchoEnvironmentImage from '../assets/images/Cerveja gelada no rancho rústico.png';
 import BaseLayout from '../layouts/BaseLayout.astro';
+
+const baseUrl = import.meta.env.BASE_URL.replace(/\/$/, '');
+const suaVisitaUrl = `${baseUrl}/sua-visita`;
 ---
 
 <BaseLayout
@@ -113,7 +116,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 					<li>Cerveja gelada</li>
 				</ul>
 
-				<a class="moments__link" href="/sua-visita">Planeje sua visita</a>
+				<a class="moments__link" href={suaVisitaUrl}>Planeje sua visita</a>
 			</div>
 		</div>
 	</section>
