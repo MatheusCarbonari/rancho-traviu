@@ -5,15 +5,60 @@
 			<p class="site-footer__tagline">Natureza, tradição e acolhimento</p>
 		</div>
 
+		<section
+			class="site-footer__social"
+			aria-labelledby="site-footer-social-title"
+		>
+			<h2 id="site-footer-social-title">Acompanhe o Rancho</h2>
+			<ul class="site-footer__social-list">
+				<li
+					class="site-footer__social-item"
+					aria-label="Instagram: link em preparação"
+				>
+					<svg
+						aria-hidden="true"
+						viewBox="0 0 24 24"
+						width="20"
+						height="20"
+						fill="none"
+						stroke="currentColor"
+						stroke-width="1.8"
+					>
+						<rect x="3" y="3" width="18" height="18" rx="5"></rect>
+						<circle cx="12" cy="12" r="4"></circle>
+						<circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"
+						></circle>
+					</svg>
+					<span>Instagram</span>
+					<span class="site-footer__social-status">Em preparação</span>
+				</li>
+				<li
+					class="site-footer__social-item"
+					aria-label="WhatsApp: link em preparação"
+				>
+					<svg
+						aria-hidden="true"
+						viewBox="0 0 24 24"
+						width="20"
+						height="20"
+						fill="none"
+						stroke="currentColor"
+						stroke-width="1.8"
+						stroke-linecap="round"
+						stroke-linejoin="round"
+					>
+						<path d="M20 11.6a8 8 0 0 1-11.8 7L4 20l1.4-4A8 8 0 1 1 20 11.6Z"
+						></path>
+						<path d="M8.7 8.3c.4 2.8 2.2 4.6 5 5l1.1-1.1c.2-.2.5-.3.8-.1l2 1"
+						></path>
+					</svg>
+					<span>WhatsApp</span>
+					<span class="site-footer__social-status">Em preparação</span>
+				</li>
+			</ul>
+		</section>
+
 		<section class="site-footer__details" aria-label="Informações para visita">
-			<p class="site-footer__detail">
-				<span class="site-footer__label">Funcionamento</span>
-				<span>Sábados, domingos e feriados.</span>
-			</p>
-			<p class="site-footer__detail">
-				<span class="site-footer__label">Horário</span>
-				<span>Das 11h às 18h.</span>
-			</p>
 			<address class="site-footer__detail">
 				<span class="site-footer__label">Endereço</span>
 				<span>Av. Salvador Kruppe, 199 – Traviú, Jundiaí.</span>
@@ -50,6 +95,49 @@
 		margin: 0;
 	}
 
+	.site-footer__social h2,
+	.site-footer__social-list {
+		margin: 0;
+	}
+
+	.site-footer__social h2,
+	.site-footer__label {
+		color: #eee5d3;
+		font-size: 0.7rem;
+		font-weight: 700;
+		letter-spacing: 0.1em;
+		line-height: 1.4;
+		text-transform: uppercase;
+	}
+
+	.site-footer__social-list {
+		display: flex;
+		margin-top: 0.75rem;
+		padding: 0;
+		flex-wrap: wrap;
+		gap: 0.75rem 1.25rem;
+		list-style: none;
+	}
+
+	.site-footer__social-item {
+		display: grid;
+		grid-template-columns: auto auto;
+		gap: 0 0.5rem;
+		align-items: center;
+		color: color-mix(in srgb, #eee5d3 88%, transparent);
+		font-size: 0.875rem;
+		line-height: 1.4;
+	}
+
+	.site-footer__social-item svg {
+		grid-row: 1 / 3;
+	}
+
+	.site-footer__social-status {
+		color: color-mix(in srgb, #eee5d3 58%, transparent);
+		font-size: 0.7rem;
+	}
+
 	.site-footer__brand {
 		font-family: Georgia, "Times New Roman", serif;
 		font-size: 1.5rem;
@@ -63,9 +151,7 @@
 	}
 
 	.site-footer__details {
-		display: grid;
 		max-width: 31rem;
-		gap: 1rem;
 	}
 
 	.site-footer__detail {
@@ -78,31 +164,17 @@
 		line-height: 1.55;
 	}
 
-	.site-footer__label {
-		color: #eee5d3;
-		font-size: 0.7rem;
-		font-weight: 700;
-		letter-spacing: 0.1em;
-		line-height: 1.4;
-		text-transform: uppercase;
-	}
-
 	@media (min-width: 56rem) {
 		.site-footer__inner {
 			display: grid;
-			grid-template-columns: minmax(11rem, 0.8fr) minmax(0, 2.2fr);
+			grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
 			padding: 3rem clamp(2rem, 6vw, 6rem);
 			align-items: flex-start;
 			column-gap: clamp(2rem, 5vw, 4rem);
 		}
 
 		.site-footer__details {
-			grid-template-columns: minmax(8.5rem, 0.9fr) minmax(6rem, 0.6fr) minmax(
-				14rem,
-				1.5fr
-			);
-			max-width: none;
-			gap: clamp(1.25rem, 3vw, 3rem);
+			justify-self: end;
 		}
 	}
 </style>

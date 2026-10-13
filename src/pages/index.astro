@@ -82,6 +82,33 @@ import ranchoImage from '../assets/images/Cerveja gelada no rancho rústico.png'
 			</figure>
 		</div>
 	</section>
+
+	<section class="visit-planning" aria-labelledby="visit-planning-title">
+		<div class="visit-planning__inner">
+			<div class="visit-planning__intro">
+				<p class="visit-planning__eyebrow">Planeje sua visita</p>
+				<h2 id="visit-planning-title">Seu próximo almoço no Rancho</h2>
+				<p class="visit-planning__description">
+					Organize sua visita e venha aproveitar um almoço em meio à natureza.
+				</p>
+			</div>
+
+			<dl class="visit-planning__details">
+				<div class="visit-planning__detail">
+					<dt>Funcionamento</dt>
+					<dd>Sábados, domingos e feriados.</dd>
+				</div>
+				<div class="visit-planning__detail">
+					<dt>Horário</dt>
+					<dd>Das 11h às 18h.</dd>
+				</div>
+			</dl>
+
+			<a class="visit-planning__link" href="/sua-visita">
+				Planeje sua visita
+			</a>
+		</div>
+	</section>
 </BaseLayout>
 
 <style>
@@ -348,6 +375,135 @@ import ranchoImage from '../assets/images/Cerveja gelada no rancho rústico.png'
 		color: var(--gastronomy-forest);
 	}
 
+	.visit-planning {
+		--visit-planning-forest: #344b36;
+		--visit-planning-cream: #eee5d3;
+		--visit-planning-wood: #936544;
+		--visit-planning-terracotta: #a65f46;
+
+		padding: clamp(3.5rem, 10vw, 5rem) 1.25rem;
+		border-top: 0.25rem solid var(--visit-planning-terracotta);
+		background: color-mix(
+			in srgb,
+			var(--visit-planning-forest) 78%,
+			var(--visit-planning-wood)
+		);
+		color: var(--visit-planning-cream);
+		font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+			sans-serif;
+	}
+
+	.visit-planning__inner {
+		display: grid;
+		width: min(100%, 72rem);
+		margin: 0 auto;
+		gap: 2.25rem;
+		align-items: center;
+	}
+
+	.visit-planning__intro {
+		max-width: 34rem;
+	}
+
+	.visit-planning__eyebrow {
+		margin: 0 0 0.75rem;
+		color: color-mix(
+			in srgb,
+			var(--visit-planning-cream) 78%,
+			var(--visit-planning-wood)
+		);
+		font-size: 0.7rem;
+		font-weight: 700;
+		letter-spacing: 0.14em;
+		line-height: 1.5;
+		text-transform: uppercase;
+	}
+
+	.visit-planning h2 {
+		max-width: 16ch;
+		margin: 0;
+		font-family: Georgia, "Times New Roman", serif;
+		font-size: clamp(2rem, 8vw, 3.25rem);
+		font-weight: 400;
+		letter-spacing: -0.03em;
+		line-height: 1.05;
+	}
+
+	.visit-planning__description {
+		max-width: 31rem;
+		margin: 1.25rem 0 0;
+		color: color-mix(
+			in srgb,
+			var(--visit-planning-cream) 82%,
+			transparent
+		);
+		font-size: 1rem;
+		line-height: 1.65;
+	}
+
+	.visit-planning__details {
+		display: grid;
+		margin: 0;
+		gap: 1.25rem;
+	}
+
+	.visit-planning__detail {
+		padding-top: 1rem;
+		border-top: 1px solid
+			color-mix(in srgb, var(--visit-planning-cream) 24%, transparent);
+	}
+
+	.visit-planning__detail dt {
+		margin-bottom: 0.3rem;
+		color: color-mix(
+			in srgb,
+			var(--visit-planning-cream) 72%,
+			var(--visit-planning-wood)
+		);
+		font-size: 0.7rem;
+		font-weight: 700;
+		letter-spacing: 0.1em;
+		line-height: 1.4;
+		text-transform: uppercase;
+	}
+
+	.visit-planning__detail dd {
+		margin: 0;
+		font-size: 0.95rem;
+		line-height: 1.5;
+	}
+
+	.visit-planning__link {
+		display: inline-flex;
+		width: 100%;
+		min-height: 2.75rem;
+		padding: 0.8rem 1.25rem;
+		align-items: center;
+		justify-content: center;
+		border: 0.125rem solid var(--visit-planning-cream);
+		border-radius: 0.25rem;
+		background: var(--visit-planning-cream);
+		color: var(--visit-planning-forest);
+		font-size: 0.9rem;
+		font-weight: 700;
+		line-height: 1.2;
+		text-align: center;
+		text-decoration: none;
+	}
+
+	.visit-planning__link:focus-visible {
+		outline: 0.1875rem solid var(--visit-planning-terracotta);
+		outline-offset: 0.25rem;
+	}
+
+	@media (hover: hover) {
+		.visit-planning__link:hover {
+			border-color: var(--visit-planning-wood);
+			background: var(--visit-planning-wood);
+			color: var(--visit-planning-cream);
+		}
+	}
+
 	@media (min-width: 48rem) {
 		.hero {
 			min-height: auto;
@@ -396,6 +552,34 @@ import ranchoImage from '../assets/images/Cerveja gelada no rancho rústico.png'
 
 		.gastronomy__media {
 			aspect-ratio: 5 / 4;
+		}
+	}
+
+	@media (min-width: 56rem) {
+		.visit-planning {
+			padding: clamp(4rem, 6vw, 5.5rem) clamp(2rem, 6vw, 6rem);
+		}
+
+		.visit-planning__inner {
+			grid-template-columns: minmax(0, 1.2fr) minmax(17rem, 0.8fr) auto;
+			gap: clamp(2rem, 3vw, 3rem);
+		}
+
+		.visit-planning__details {
+			grid-template-columns: repeat(2, minmax(0, 1fr));
+			gap: 1.5rem;
+		}
+
+		.visit-planning__detail {
+			padding: 0 0 0 1.25rem;
+			border-top: 0;
+			border-left: 1px solid
+				color-mix(in srgb, var(--visit-planning-cream) 24%, transparent);
+		}
+
+		.visit-planning__link {
+			width: auto;
+			white-space: nowrap;
 		}
 	}
 </style>
