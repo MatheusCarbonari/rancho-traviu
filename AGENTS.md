@@ -7,8 +7,16 @@
 - Não introduza dependências desnecessárias.
 - Não adicione backend, autenticação ou frameworks de interface sem necessidade justificada.
 - Não invente informações sobre o Rancho Traviú; sinalize quando conteúdo real estiver ausente.
-- Valide as alterações com os comandos adequados, incluindo `npm run build` quando aplicável, e informe os resultados.
 - Não realize commits automaticamente.
+
+## Testes e validações
+
+- Priorize verificações proporcionais aos riscos e à complexidade de cada alteração.
+- Após alterações no site, execute `npm run build` e `git diff --check`.
+- Conforme os componentes forem implementados, confira links, estrutura semântica e acessibilidade.
+- Sempre que possível, valide visualmente o comportamento mobile e desktop.
+- Informe os resultados das validações e declare qualquer verificação que não puder ser realizada.
+- Avalie a adoção de testes automatizados quando surgirem funcionalidades que os justifiquem. Ferramentas como Astro Check e Playwright poderão ser incorporadas posteriormente, diante de uma necessidade concreta.
 
 ## Servidor de desenvolvimento
 
