@@ -2,6 +2,7 @@
 import { Image } from 'astro:assets';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import gastronomyImage from '../assets/images/banquete_rBAstico_no_rancho.png';
+import heroImage from '../assets/images/Terraço Rústico Sob as Árvores.png';
 import ranchoImage from '../assets/images/Cerveja gelada no rancho rústico.png';
 ---
 
@@ -21,9 +22,13 @@ import ranchoImage from '../assets/images/Cerveja gelada no rancho rústico.png'
 			</div>
 
 			<figure class="hero__media">
-				<div class="hero__placeholder">
-					<span>Espaço reservado para a fotografia principal</span>
-				</div>
+				<Image
+					src={heroImage}
+					alt="Imagem ilustrativa do ambiente principal do Rancho, com árvores, mesas ao ar livre e estrutura rústica acolhedora."
+					class="hero__image"
+					layout="full-width"
+					priority
+				/>
 				<figcaption>Imagem ilustrativa</figcaption>
 			</figure>
 		</div>
@@ -142,33 +147,18 @@ import ranchoImage from '../assets/images/Cerveja gelada no rancho rústico.png'
 		aspect-ratio: 4 / 3;
 		margin: 0;
 		place-items: center;
+		overflow: hidden;
 		border: 1px solid color-mix(in srgb, var(--hero-forest) 35%, transparent);
 		border-radius: 0.25rem 2rem 0.25rem 2rem;
 		background: color-mix(in srgb, var(--hero-wood) 16%, var(--hero-cream));
 		box-shadow: 0.75rem 0.75rem 0 var(--hero-forest);
 	}
 
-	.hero__media::before {
-		position: absolute;
-		inset: 1rem;
-		border: 1px solid color-mix(in srgb, var(--hero-forest) 24%, transparent);
-		border-radius: 0.15rem 1.35rem 0.15rem 1.35rem;
-		content: "";
-	}
-
-	.hero__placeholder {
-		max-width: 16rem;
-		padding: 2rem;
-		text-align: center;
-	}
-
-	.hero__placeholder span {
+	.hero__media :global(.hero__image) {
 		display: block;
-		font-size: 0.8rem;
-		font-weight: 600;
-		letter-spacing: 0.08em;
-		line-height: 1.5;
-		text-transform: uppercase;
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
 	}
 
 	figcaption {
@@ -360,7 +350,7 @@ import ranchoImage from '../assets/images/Cerveja gelada no rancho rústico.png'
 
 	@media (min-width: 48rem) {
 		.hero {
-			min-height: calc(100svh - 5.25rem);
+			min-height: auto;
 			padding: clamp(3.5rem, 5vw, 5rem) clamp(2rem, 6vw, 6rem)
 				clamp(4rem, 7vw, 7rem);
 		}
@@ -368,6 +358,7 @@ import ranchoImage from '../assets/images/Cerveja gelada no rancho rústico.png'
 		.hero__inner {
 			grid-template-columns: minmax(0, 0.85fr) minmax(22rem, 1.15fr);
 			gap: clamp(4rem, 8vw, 8rem);
+			align-items: start;
 		}
 
 		.hero__media {
