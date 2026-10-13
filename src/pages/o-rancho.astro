@@ -4,8 +4,103 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
 <BaseLayout
 	title="O Rancho | Rancho Traviú"
-	description="Conheça o Rancho Traviú."
+	description="Conheça o ambiente simples do Rancho Traviú, entre árvores, mesas ao ar livre e comida preparada no fogão a lenha."
 >
-	<h1>O Rancho</h1>
-	<p>Conteúdo em preparação.</p>
+	<section class="rancho-intro" aria-labelledby="rancho-intro-title">
+		<div class="rancho-intro__inner">
+			<p class="rancho-intro__eyebrow">O Rancho</p>
+
+			<h1 id="rancho-intro-title">Conheça o Rancho Traviú</h1>
+
+			<div class="rancho-intro__description">
+				<p>
+					Em meio às árvores e com mesas ao ar livre, o Rancho Traviú reúne
+					comida preparada no fogão a lenha, cerveja gelada e um ambiente
+					descontraído para aproveitar sem pressa.
+				</p>
+			</div>
+		</div>
+	</section>
 </BaseLayout>
+
+<style>
+	.rancho-intro {
+		--rancho-forest: #344b36;
+		--rancho-cream: #eee5d3;
+		--rancho-wood: #936544;
+		--rancho-terracotta: #a65f46;
+
+		padding: clamp(4rem, 12vw, 6rem) 1.25rem;
+		background: color-mix(
+			in srgb,
+			var(--rancho-forest) 5%,
+			var(--rancho-cream)
+		);
+		color: var(--rancho-forest);
+		font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+			sans-serif;
+	}
+
+	.rancho-intro__inner {
+		display: grid;
+		width: min(100%, 72rem);
+		margin: 0 auto;
+		gap: 1.25rem;
+	}
+
+	.rancho-intro__eyebrow {
+		margin: 0;
+		color: var(--rancho-wood);
+		font-size: 0.75rem;
+		font-weight: 700;
+		letter-spacing: 0.14em;
+		line-height: 1.5;
+		text-transform: uppercase;
+	}
+
+	h1 {
+		max-width: 12ch;
+		margin: 0;
+		font-family: Georgia, "Times New Roman", serif;
+		font-size: clamp(2.75rem, 13vw, 5.5rem);
+		font-weight: 400;
+		letter-spacing: -0.045em;
+		line-height: 0.98;
+	}
+
+	.rancho-intro__description {
+		max-width: 36rem;
+		margin-top: 1rem;
+		padding: 1.25rem 0 0 1.25rem;
+		border-top: 0.25rem solid var(--rancho-terracotta);
+	}
+
+	.rancho-intro__description p {
+		margin: 0;
+		font-size: clamp(1.05rem, 4vw, 1.2rem);
+		line-height: 1.7;
+	}
+
+	@media (min-width: 48rem) {
+		.rancho-intro {
+			padding: clamp(5rem, 8vw, 7rem) clamp(2rem, 6vw, 6rem);
+		}
+
+		.rancho-intro__inner {
+			grid-template-columns: minmax(0, 1.15fr) minmax(20rem, 0.85fr);
+			gap: 1.5rem clamp(4rem, 8vw, 7rem);
+			align-items: end;
+		}
+
+		.rancho-intro__eyebrow {
+			grid-column: 1 / -1;
+		}
+
+		.rancho-intro__description {
+			margin: 0 0 0.4rem;
+			padding: 0.5rem 0 0.5rem clamp(1.5rem, 3vw, 2.25rem);
+			border-top: 0;
+			border-left: 0.25rem solid var(--rancho-terracotta);
+		}
+	}
+</style>
