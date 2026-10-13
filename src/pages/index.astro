@@ -25,6 +25,55 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 			</figure>
 		</div>
 	</section>
+
+	<section class="rancho" aria-labelledby="rancho-title">
+		<div class="rancho__inner">
+			<div class="rancho__content">
+				<p class="rancho__eyebrow">O Rancho</p>
+				<h2 id="rancho-title">Um lugar para aproveitar sem pressa.</h2>
+				<p class="rancho__description">
+					Entre árvores e mesas ao ar livre, o Rancho Traviú convida a
+					aproveitar o ambiente com calma. A comida preparada no fogão a lenha
+					completa essa experiência simples e tradicional.
+				</p>
+			</div>
+
+			<figure class="rancho__media">
+				<div
+					class="rancho__placeholder"
+					role="img"
+					aria-label="Espaço reservado para futura fotografia do ambiente do Rancho Traviú"
+				>
+					<span>Espaço reservado para a fotografia do ambiente</span>
+				</div>
+				<figcaption>Imagem ilustrativa</figcaption>
+			</figure>
+		</div>
+	</section>
+
+	<section class="gastronomy" aria-labelledby="gastronomy-title">
+		<div class="gastronomy__inner">
+			<div class="gastronomy__content">
+				<p class="gastronomy__eyebrow">Sabores do Rancho</p>
+				<h2 id="gastronomy-title">O sabor do fogão a lenha</h2>
+				<p class="gastronomy__description">
+					O fogão a lenha e as panelas de barro fazem parte de um preparo que
+					mantém viva a tradição da comida simples, feita com tempo e cuidado.
+				</p>
+			</div>
+
+			<figure class="gastronomy__media">
+				<div
+					class="gastronomy__placeholder"
+					role="img"
+					aria-label="Espaço reservado para futura fotografia da comida ou do fogão a lenha"
+				>
+					<span>Espaço reservado para a fotografia da gastronomia</span>
+				</div>
+				<figcaption>Imagem ilustrativa</figcaption>
+			</figure>
+		</div>
+	</section>
 </BaseLayout>
 
 <style>
@@ -131,6 +180,199 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 		text-transform: uppercase;
 	}
 
+	.rancho {
+		--rancho-forest: #344b36;
+		--rancho-cream: #eee5d3;
+		--rancho-wood: #936544;
+
+		padding: clamp(4rem, 12vw, 6rem) 1.25rem;
+		border-top: 1px solid
+			color-mix(in srgb, var(--rancho-wood) 30%, transparent);
+		background: color-mix(
+			in srgb,
+			var(--rancho-forest) 5%,
+			var(--rancho-cream)
+		);
+		color: var(--rancho-forest);
+		font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+			sans-serif;
+	}
+
+	.rancho__inner {
+		display: grid;
+		width: min(100%, 72rem);
+		margin: 0 auto;
+		gap: clamp(2.5rem, 9vw, 4.5rem);
+		align-items: center;
+	}
+
+	.rancho__content {
+		max-width: 36rem;
+	}
+
+	.rancho__eyebrow {
+		margin: 0 0 0.9rem;
+		color: var(--rancho-wood);
+		font-size: 0.75rem;
+		font-weight: 700;
+		letter-spacing: 0.14em;
+		line-height: 1.5;
+		text-transform: uppercase;
+	}
+
+	.rancho h2 {
+		max-width: 15ch;
+		margin: 0;
+		font-family: Georgia, "Times New Roman", serif;
+		font-size: clamp(2.25rem, 10vw, 4rem);
+		font-weight: 400;
+		letter-spacing: -0.035em;
+		line-height: 1.05;
+	}
+
+	.rancho__description {
+		max-width: 34rem;
+		margin: 1.5rem 0 0;
+		font-size: clamp(1rem, 3vw, 1.125rem);
+		line-height: 1.7;
+	}
+
+	.rancho__media {
+		position: relative;
+		display: grid;
+		width: 100%;
+		aspect-ratio: 4 / 3;
+		margin: 0;
+		place-items: center;
+		overflow: hidden;
+		border: 1px solid
+			color-mix(in srgb, var(--rancho-forest) 35%, transparent);
+		border-radius: 1.5rem 0.25rem 1.5rem 0.25rem;
+		background: color-mix(
+			in srgb,
+			var(--rancho-forest) 88%,
+			var(--rancho-wood)
+		);
+		color: var(--rancho-cream);
+	}
+
+	.rancho__placeholder {
+		max-width: 18rem;
+		padding: 2rem;
+		text-align: center;
+	}
+
+	.rancho__placeholder span {
+		display: block;
+		font-size: 0.8rem;
+		font-weight: 600;
+		letter-spacing: 0.08em;
+		line-height: 1.5;
+		text-transform: uppercase;
+	}
+
+	.rancho__media figcaption {
+		background: var(--rancho-cream);
+		color: var(--rancho-forest);
+	}
+
+	.gastronomy {
+		--gastronomy-forest: #344b36;
+		--gastronomy-cream: #eee5d3;
+		--gastronomy-wood: #936544;
+		--gastronomy-terracotta: #a65f46;
+
+		padding: clamp(4rem, 12vw, 6rem) 1.25rem;
+		border-top: 1px solid
+			color-mix(in srgb, var(--gastronomy-terracotta) 35%, transparent);
+		background: color-mix(
+			in srgb,
+			var(--gastronomy-wood) 16%,
+			var(--gastronomy-cream)
+		);
+		color: var(--gastronomy-forest);
+		font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+			sans-serif;
+	}
+
+	.gastronomy__inner {
+		display: grid;
+		width: min(100%, 72rem);
+		margin: 0 auto;
+		gap: clamp(2.5rem, 9vw, 4.5rem);
+		align-items: center;
+	}
+
+	.gastronomy__content {
+		max-width: 36rem;
+	}
+
+	.gastronomy__eyebrow {
+		margin: 0 0 0.9rem;
+		color: var(--gastronomy-wood);
+		font-size: 0.75rem;
+		font-weight: 700;
+		letter-spacing: 0.14em;
+		line-height: 1.5;
+		text-transform: uppercase;
+	}
+
+	.gastronomy h2 {
+		max-width: 15ch;
+		margin: 0;
+		font-family: Georgia, "Times New Roman", serif;
+		font-size: clamp(2.25rem, 10vw, 4rem);
+		font-weight: 400;
+		letter-spacing: -0.035em;
+		line-height: 1.05;
+	}
+
+	.gastronomy__description {
+		max-width: 34rem;
+		margin: 1.5rem 0 0;
+		font-size: clamp(1rem, 3vw, 1.125rem);
+		line-height: 1.7;
+	}
+
+	.gastronomy__media {
+		position: relative;
+		display: grid;
+		width: 100%;
+		aspect-ratio: 4 / 3;
+		margin: 0;
+		place-items: center;
+		overflow: hidden;
+		border: 1px solid
+			color-mix(in srgb, var(--gastronomy-forest) 30%, transparent);
+		border-radius: 0.25rem 1.5rem 0.25rem 1.5rem;
+		background: color-mix(
+			in srgb,
+			var(--gastronomy-terracotta) 78%,
+			var(--gastronomy-wood)
+		);
+		color: var(--gastronomy-cream);
+	}
+
+	.gastronomy__placeholder {
+		max-width: 18rem;
+		padding: 2rem;
+		text-align: center;
+	}
+
+	.gastronomy__placeholder span {
+		display: block;
+		font-size: 0.8rem;
+		font-weight: 600;
+		letter-spacing: 0.08em;
+		line-height: 1.5;
+		text-transform: uppercase;
+	}
+
+	.gastronomy__media figcaption {
+		background: var(--gastronomy-cream);
+		color: var(--gastronomy-forest);
+	}
+
 	@media (min-width: 48rem) {
 		.hero {
 			min-height: calc(100svh - 5.25rem);
@@ -144,6 +386,39 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 		}
 
 		.hero__media {
+			aspect-ratio: 5 / 4;
+		}
+
+		.rancho {
+			padding: clamp(5rem, 8vw, 8rem) clamp(2rem, 6vw, 6rem);
+		}
+
+		.rancho__inner {
+			grid-template-columns: minmax(22rem, 1.1fr) minmax(0, 0.9fr);
+			gap: clamp(4rem, 8vw, 7rem);
+		}
+
+		.rancho__content {
+			grid-column: 2;
+			grid-row: 1;
+		}
+
+		.rancho__media {
+			grid-column: 1;
+			grid-row: 1;
+			aspect-ratio: 5 / 4;
+		}
+
+		.gastronomy {
+			padding: clamp(5rem, 8vw, 8rem) clamp(2rem, 6vw, 6rem);
+		}
+
+		.gastronomy__inner {
+			grid-template-columns: minmax(0, 0.9fr) minmax(22rem, 1.1fr);
+			gap: clamp(4rem, 8vw, 7rem);
+		}
+
+		.gastronomy__media {
 			aspect-ratio: 5 / 4;
 		}
 	}
