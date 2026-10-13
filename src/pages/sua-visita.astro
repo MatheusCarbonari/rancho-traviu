@@ -1,11 +1,263 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+
+const whatsappNumero = '';
+const whatsappNumeroValido = /^55\d{10,11}$/.test(whatsappNumero);
+const whatsappUrl = whatsappNumeroValido
+	? `https://wa.me/${whatsappNumero}`
+	: null;
+
+const googleMapsDestination =
+	'Rancho Traviú, Av. Salvador Kruppe, 199 – Traviú, Jundiaí – SP';
+const googleMapsUrl = `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(googleMapsDestination)}`;
 ---
 
 <BaseLayout
 	title="Sua Visita | Rancho Traviú"
 	description="Informações para planejar sua visita ao Rancho Traviú."
 >
-	<h1>Sua Visita</h1>
-	<p>Conteúdo em preparação.</p>
+	<section class="visit" aria-labelledby="visit-title">
+		<div class="visit__inner">
+			<header class="visit__intro">
+				<p class="visit__eyebrow">Sua Visita</p>
+				<h1 id="visit-title">Venha conhecer o Rancho</h1>
+				<p class="visit__description">
+					Venha aproveitar um almoço em meio à natureza, entre árvores e o
+					ambiente simples e acolhedor do Rancho Traviú.
+				</p>
+			</header>
+
+			<section class="visit__details" aria-labelledby="visit-details-title">
+				<h2 id="visit-details-title">Informações para sua visita</h2>
+
+				<dl>
+					<div class="visit__item">
+						<dt>Funcionamento</dt>
+						<dd>Sábados, domingos e feriados.</dd>
+					</div>
+					<div class="visit__item">
+						<dt>Horário</dt>
+						<dd>Das 11h às 18h.</dd>
+					</div>
+					<div class="visit__item">
+						<dt>Endereço</dt>
+						<dd>
+							<address>
+								Av. Salvador Kruppe, 199 – Traviú, Jundiaí.
+							</address>
+							<a
+								class="visit__maps"
+								href={googleMapsUrl}
+								target="_blank"
+								rel="noopener noreferrer"
+								aria-label="Como chegar ao Rancho Traviú pelo Google Maps (abre em nova aba)"
+							>
+								Como chegar
+							</a>
+						</dd>
+					</div>
+				</dl>
+
+				{
+					whatsappUrl && (
+						<a
+							class="visit__whatsapp"
+							href={whatsappUrl}
+							target="_blank"
+							rel="noopener noreferrer"
+							aria-label="Fale conosco pelo WhatsApp (abre em nova aba)"
+						>
+							Fale conosco pelo WhatsApp
+						</a>
+					)
+				}
+			</section>
+		</div>
+	</section>
 </BaseLayout>
+
+<style>
+	.visit {
+		--visit-forest: #344b36;
+		--visit-cream: #eee5d3;
+		--visit-wood: #936544;
+		--visit-terracotta: #a65f46;
+
+		padding: clamp(4rem, 12vw, 6rem) 1.25rem;
+		background: var(--visit-cream);
+		color: var(--visit-forest);
+		font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+			sans-serif;
+	}
+
+	.visit__inner {
+		display: grid;
+		width: min(100%, 72rem);
+		margin: 0 auto;
+		gap: clamp(3rem, 10vw, 5rem);
+		align-items: center;
+	}
+
+	.visit__intro {
+		max-width: 38rem;
+	}
+
+	.visit__eyebrow {
+		margin: 0 0 1rem;
+		color: var(--visit-wood);
+		font-size: 0.75rem;
+		font-weight: 700;
+		letter-spacing: 0.14em;
+		line-height: 1.5;
+		text-transform: uppercase;
+	}
+
+	h1 {
+		max-width: 12ch;
+		margin: 0;
+		font-family: Georgia, "Times New Roman", serif;
+		font-size: clamp(2.75rem, 13vw, 5.5rem);
+		font-weight: 400;
+		letter-spacing: -0.045em;
+		line-height: 0.98;
+	}
+
+	.visit__description {
+		max-width: 34rem;
+		margin: 1.75rem 0 0;
+		font-size: clamp(1.05rem, 4vw, 1.2rem);
+		line-height: 1.65;
+	}
+
+	.visit__details {
+		padding: clamp(1.75rem, 7vw, 2.75rem);
+		border-top: 0.25rem solid var(--visit-terracotta);
+		border-radius: 0.25rem 1.5rem 0.25rem 1.5rem;
+		background: color-mix(
+			in srgb,
+			var(--visit-wood) 14%,
+			var(--visit-cream)
+		);
+	}
+
+	.visit__details h2 {
+		margin: 0 0 1.5rem;
+		font-family: Georgia, "Times New Roman", serif;
+		font-size: clamp(1.5rem, 6vw, 2rem);
+		font-weight: 400;
+		line-height: 1.2;
+	}
+
+	.visit__details dl {
+		margin: 0;
+	}
+
+	.visit__item {
+		padding: 1.25rem 0;
+		border-top: 1px solid
+			color-mix(in srgb, var(--visit-wood) 35%, transparent);
+	}
+
+	.visit__item:first-child {
+		border-top: 0;
+	}
+
+	.visit__item:last-child {
+		padding-bottom: 0;
+	}
+
+	.visit__item dt {
+		margin-bottom: 0.35rem;
+		color: var(--visit-terracotta);
+		font-size: 0.7rem;
+		font-weight: 700;
+		letter-spacing: 0.1em;
+		line-height: 1.4;
+		text-transform: uppercase;
+	}
+
+	.visit__item dd {
+		margin: 0;
+		font-size: 1rem;
+		line-height: 1.55;
+	}
+
+	.visit__item address {
+		font-style: normal;
+	}
+
+	.visit__maps {
+		display: inline-flex;
+		width: 100%;
+		min-height: 2.75rem;
+		margin-top: 1rem;
+		padding: 0.75rem 1.25rem;
+		align-items: center;
+		justify-content: center;
+		border: 0.125rem solid var(--visit-forest);
+		border-radius: 0.25rem;
+		color: var(--visit-forest);
+		font-size: 0.9rem;
+		font-weight: 700;
+		line-height: 1.2;
+		text-align: center;
+		text-decoration: none;
+	}
+
+	.visit__maps:focus-visible {
+		outline: 0.1875rem solid var(--visit-terracotta);
+		outline-offset: 0.2rem;
+	}
+
+	.visit__whatsapp {
+		display: inline-flex;
+		width: 100%;
+		min-height: 2.75rem;
+		margin-top: 2rem;
+		padding: 0.75rem 1.25rem;
+		align-items: center;
+		justify-content: center;
+		border: 0.125rem solid var(--visit-forest);
+		border-radius: 0.25rem;
+		background: var(--visit-forest);
+		color: var(--visit-cream);
+		font-size: 0.9rem;
+		font-weight: 700;
+		line-height: 1.2;
+		text-align: center;
+		text-decoration: none;
+	}
+
+	.visit__whatsapp:focus-visible {
+		outline: 0.1875rem solid var(--visit-terracotta);
+		outline-offset: 0.2rem;
+	}
+
+	@media (hover: hover) {
+		.visit__maps:hover {
+			background: var(--visit-forest);
+			color: var(--visit-cream);
+		}
+
+		.visit__whatsapp:hover {
+			border-color: var(--visit-wood);
+			background: var(--visit-wood);
+		}
+	}
+
+	@media (min-width: 48rem) {
+		.visit {
+			padding: clamp(4.5rem, 7vw, 7rem) clamp(2rem, 6vw, 6rem);
+		}
+
+		.visit__inner {
+			grid-template-columns: minmax(0, 0.95fr) minmax(20rem, 1.05fr);
+			gap: clamp(4rem, 8vw, 7rem);
+		}
+
+		.visit__maps,
+		.visit__whatsapp {
+			width: auto;
+		}
+	}
+</style>
