@@ -1,0 +1,108 @@
+<footer class="site-footer">
+	<div class="site-footer__inner">
+		<div class="site-footer__identity">
+			<p class="site-footer__brand">Rancho Traviú</p>
+			<p class="site-footer__tagline">Natureza, tradição e acolhimento</p>
+		</div>
+
+		<section class="site-footer__details" aria-label="Informações para visita">
+			<p class="site-footer__detail">
+				<span class="site-footer__label">Funcionamento</span>
+				<span>Sábados, domingos e feriados.</span>
+			</p>
+			<p class="site-footer__detail">
+				<span class="site-footer__label">Horário</span>
+				<span>Das 11h às 18h.</span>
+			</p>
+			<address class="site-footer__detail">
+				<span class="site-footer__label">Endereço</span>
+				<span>Av. Salvador Kruppe, 199 – Traviú, Jundiaí.</span>
+			</address>
+		</section>
+	</div>
+</footer>
+
+<style>
+	.site-footer {
+		border-top: 0.25rem solid #936544;
+		background: #344b36;
+		color: #eee5d3;
+		font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+			sans-serif;
+	}
+
+	.site-footer__inner {
+		display: flex;
+		width: min(100%, 72rem);
+		margin: 0 auto;
+		padding: 2.5rem 1.25rem;
+		flex-direction: column;
+		gap: 2rem;
+	}
+
+	.site-footer__identity {
+		display: grid;
+		gap: 0.35rem;
+	}
+
+	.site-footer__brand,
+	.site-footer__tagline {
+		margin: 0;
+	}
+
+	.site-footer__brand {
+		font-family: Georgia, "Times New Roman", serif;
+		font-size: 1.5rem;
+		line-height: 1.2;
+	}
+
+	.site-footer__tagline {
+		color: color-mix(in srgb, #eee5d3 78%, transparent);
+		font-size: 0.9rem;
+		line-height: 1.5;
+	}
+
+	.site-footer__details {
+		display: grid;
+		max-width: 31rem;
+		gap: 1rem;
+	}
+
+	.site-footer__detail {
+		display: grid;
+		margin: 0;
+		gap: 0.2rem;
+		color: color-mix(in srgb, #eee5d3 82%, transparent);
+		font-size: 0.875rem;
+		font-style: normal;
+		line-height: 1.55;
+	}
+
+	.site-footer__label {
+		color: #eee5d3;
+		font-size: 0.7rem;
+		font-weight: 700;
+		letter-spacing: 0.1em;
+		line-height: 1.4;
+		text-transform: uppercase;
+	}
+
+	@media (min-width: 56rem) {
+		.site-footer__inner {
+			display: grid;
+			grid-template-columns: minmax(11rem, 0.8fr) minmax(0, 2.2fr);
+			padding: 3rem clamp(2rem, 6vw, 6rem);
+			align-items: flex-start;
+			column-gap: clamp(2rem, 5vw, 4rem);
+		}
+
+		.site-footer__details {
+			grid-template-columns: minmax(8.5rem, 0.9fr) minmax(6rem, 0.6fr) minmax(
+				14rem,
+				1.5fr
+			);
+			max-width: none;
+			gap: clamp(1.25rem, 3vw, 3rem);
+		}
+	}
+</style>
