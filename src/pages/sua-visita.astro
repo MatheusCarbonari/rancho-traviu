@@ -1,7 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 
-const whatsappNumero = '';
+const whatsappNumero = '5511996773369';
 const whatsappNumeroValido = /^55\d{10,11}$/.test(whatsappNumero);
 const whatsappUrl = whatsappNumeroValido
 	? `https://wa.me/${whatsappNumero}`
@@ -60,15 +60,38 @@ const googleMapsUrl = `https://www.google.com/maps/dir/?api=1&destination=${enco
 
 				{
 					whatsappUrl && (
-						<a
-							class="visit__whatsapp"
-							href={whatsappUrl}
-							target="_blank"
-							rel="noopener noreferrer"
-							aria-label="Fale conosco pelo WhatsApp (abre em nova aba)"
+						<aside
+							class="visit__contact"
+							aria-labelledby="visit-contact-title"
 						>
-							Fale conosco pelo WhatsApp
-						</a>
+							<h3 id="visit-contact-title">Fale com o Rancho</h3>
+							<p>Ficou com alguma dúvida? Entre em contato com a gente.</p>
+							<a
+								class="visit__whatsapp"
+								href={whatsappUrl}
+								target="_blank"
+								rel="noopener noreferrer"
+								aria-label="Conversar com o Rancho Traviú pelo WhatsApp (abre em nova aba)"
+							>
+								<svg
+									aria-hidden="true"
+									viewBox="0 0 24 24"
+									width="20"
+									height="20"
+									fill="none"
+									stroke="currentColor"
+									stroke-width="1.8"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+								>
+									<path d="M20 11.6a8 8 0 0 1-11.8 7L4 20l1.4-4A8 8 0 1 1 20 11.6Z"
+									></path>
+									<path d="M8.7 8.3c.4 2.8 2.2 4.6 5 5l1.1-1.1c.2-.2.5-.3.8-.1l2 1"
+									></path>
+								</svg>
+								<span>Conversar pelo WhatsApp</span>
+							</a>
+						</aside>
 					)
 				}
 			</section>
@@ -209,14 +232,37 @@ const googleMapsUrl = `https://www.google.com/maps/dir/?api=1&destination=${enco
 		outline-offset: 0.2rem;
 	}
 
+	.visit__contact {
+		margin-top: 2rem;
+		padding-top: 1.5rem;
+		border-top: 1px solid
+			color-mix(in srgb, var(--visit-wood) 35%, transparent);
+	}
+
+	.visit__contact h3 {
+		margin: 0;
+		color: #7d4331;
+		font-size: 0.7rem;
+		font-weight: 700;
+		letter-spacing: 0.1em;
+		line-height: 1.4;
+		text-transform: uppercase;
+	}
+
+	.visit__contact p {
+		margin: 0.5rem 0 0;
+		line-height: 1.55;
+	}
+
 	.visit__whatsapp {
 		display: inline-flex;
 		width: 100%;
 		min-height: 2.75rem;
-		margin-top: 2rem;
+		margin-top: 1.25rem;
 		padding: 0.75rem 1.25rem;
 		align-items: center;
 		justify-content: center;
+		gap: 0.65rem;
 		border: 0.125rem solid var(--visit-forest);
 		border-radius: 0.25rem;
 		background: var(--visit-forest);
@@ -229,8 +275,12 @@ const googleMapsUrl = `https://www.google.com/maps/dir/?api=1&destination=${enco
 	}
 
 	.visit__whatsapp:focus-visible {
-		outline: 0.1875rem solid var(--visit-terracotta);
+		outline: 0.1875rem solid #7d4331;
 		outline-offset: 0.2rem;
+	}
+
+	.visit__whatsapp svg {
+		flex: none;
 	}
 
 	@media (hover: hover) {
@@ -240,8 +290,8 @@ const googleMapsUrl = `https://www.google.com/maps/dir/?api=1&destination=${enco
 		}
 
 		.visit__whatsapp:hover {
-			border-color: var(--visit-wood);
-			background: var(--visit-wood);
+			border-color: #765033;
+			background: #765033;
 		}
 	}
 

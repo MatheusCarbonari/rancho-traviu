@@ -32,28 +32,32 @@
 					<span>Instagram</span>
 					<span class="site-footer__social-status">Em preparação</span>
 				</li>
-				<li
-					class="site-footer__social-item"
-					aria-label="WhatsApp: link em preparação"
-				>
-					<svg
-						aria-hidden="true"
-						viewBox="0 0 24 24"
-						width="20"
-						height="20"
-						fill="none"
-						stroke="currentColor"
-						stroke-width="1.8"
-						stroke-linecap="round"
-						stroke-linejoin="round"
+				<li>
+					<a
+						class="site-footer__social-item site-footer__social-link"
+						href="https://wa.me/5511996773369"
+						target="_blank"
+						rel="noopener noreferrer"
+						aria-label="Fale com o Rancho Traviú pelo WhatsApp (abre em nova aba)"
 					>
-						<path d="M20 11.6a8 8 0 0 1-11.8 7L4 20l1.4-4A8 8 0 1 1 20 11.6Z"
-						></path>
-						<path d="M8.7 8.3c.4 2.8 2.2 4.6 5 5l1.1-1.1c.2-.2.5-.3.8-.1l2 1"
-						></path>
-					</svg>
-					<span>WhatsApp</span>
-					<span class="site-footer__social-status">Em preparação</span>
+						<svg
+							aria-hidden="true"
+							viewBox="0 0 24 24"
+							width="20"
+							height="20"
+							fill="none"
+							stroke="currentColor"
+							stroke-width="1.8"
+							stroke-linecap="round"
+							stroke-linejoin="round"
+						>
+							<path d="M20 11.6a8 8 0 0 1-11.8 7L4 20l1.4-4A8 8 0 1 1 20 11.6Z"
+							></path>
+							<path d="M8.7 8.3c.4 2.8 2.2 4.6 5 5l1.1-1.1c.2-.2.5-.3.8-.1l2 1"
+							></path>
+						</svg>
+						<span>WhatsApp</span>
+					</a>
 				</li>
 			</ul>
 		</section>
@@ -131,6 +135,20 @@
 
 	.site-footer__social-item svg {
 		grid-row: 1 / 3;
+	}
+
+	.site-footer__social-link {
+		min-height: 2.75rem;
+		text-decoration: none;
+	}
+
+	.site-footer__social-link svg {
+		grid-row: 1;
+	}
+
+	.site-footer__social-link:focus-visible {
+		outline: 0.1875rem solid #eee5d3;
+		outline-offset: 0.2rem;
 	}
 
 	.site-footer__social-status {
