@@ -25,18 +25,24 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 			</div>
 		</section>
 
-		<section class="menu-category" aria-labelledby="wood-stove-title">
+		<section class="menu-category" aria-labelledby="all-you-can-eat-title">
 			<div class="menu-category__inner">
-				<header class="menu-category__heading">
-					<p>Sabores tradicionais</p>
-					<h2 id="wood-stove-title">Do fogão a lenha</h2>
+				<header class="menu-category__heading menu-category__heading--priced">
+					<div>
+						<p class="menu-category__eyebrow">Sabores tradicionais</p>
+						<h2 id="all-you-can-eat-title">Coma à vontade</h2>
+					</div>
+
+					<p class="menu-category__price">
+						<data value="69.90">R$ 69,90</data>
+						<span>por pessoa</span>
+					</p>
 				</header>
 
-				<ul class="menu-list">
+				<ul class="menu-list menu-list--included">
 					<li class="menu-item">
 						<div class="menu-item__heading">
 							<h3>Frango caipira</h3>
-							<data value="48.00">R$ 48,00</data>
 						</div>
 						<p>
 							Preparado lentamente, com tempero caseiro e sabor de comida feita
@@ -46,8 +52,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
 					<li class="menu-item">
 						<div class="menu-item__heading">
-							<h3>Costelinha suína</h3>
-							<data value="46.00">R$ 46,00</data>
+							<h3>Costela suína</h3>
 						</div>
 						<p>
 							Macia e bem temperada, com o sabor acolhedor da cozinha do campo.
@@ -57,7 +62,6 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 					<li class="menu-item">
 						<div class="menu-item__heading">
 							<h3>Carne de panela</h3>
-							<data value="44.00">R$ 44,00</data>
 						</div>
 						<p>
 							Cozida devagar, macia e com o sabor tradicional da comida caseira.
@@ -66,10 +70,47 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
 					<li class="menu-item">
 						<div class="menu-item__heading">
+							<h3>Arroz e feijão</h3>
+						</div>
+						<p>Acompanhamentos clássicos da comida caseira do dia a dia.</p>
+					</li>
+				</ul>
+			</div>
+		</section>
+
+		<section
+			class="menu-category menu-category--sides"
+			aria-labelledby="sides-title"
+		>
+			<div class="menu-category__inner">
+				<header class="menu-category__heading">
+					<p class="menu-category__eyebrow">Pedidos separados</p>
+					<h2 id="sides-title">Porções à parte</h2>
+				</header>
+
+				<ul class="menu-list">
+					<li class="menu-item">
+						<div class="menu-item__heading">
 							<h3>Batata frita</h3>
 							<data value="45.00">R$ 45,00</data>
 						</div>
 						<p>Porção dourada e crocante para acompanhar a refeição.</p>
+					</li>
+
+					<li class="menu-item">
+						<div class="menu-item__heading">
+							<h3>Mandioca frita</h3>
+							<data value="32.00">R$ 32,00</data>
+						</div>
+						<p>Mandioca dourada por fora e macia por dentro.</p>
+					</li>
+
+					<li class="menu-item">
+						<div class="menu-item__heading">
+							<h3>Torresmo</h3>
+							<data value="38.00">R$ 38,00</data>
+						</div>
+						<p>Porção crocante, preparada ao estilo caseiro.</p>
 					</li>
 				</ul>
 			</div>
@@ -108,7 +149,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 	}
 
 	.menu-intro__eyebrow,
-	.menu-category__heading p {
+	.menu-category__eyebrow {
 		margin: 0 0 1rem;
 		color: var(--menu-wood);
 		font-size: 0.75rem;
@@ -166,9 +207,32 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 		border-left: 0.25rem solid var(--menu-terracotta);
 	}
 
-	.menu-category__heading p {
+	.menu-category__eyebrow {
 		margin-bottom: 0.65rem;
 		color: var(--menu-terracotta);
+	}
+
+	.menu-category__price {
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+		margin: 1.5rem 0 0;
+		color: var(--menu-terracotta);
+	}
+
+	.menu-category__price data {
+		font-family: Georgia, "Times New Roman", serif;
+		font-size: clamp(2rem, 8vw, 3rem);
+		line-height: 1;
+	}
+
+	.menu-category__price span {
+		margin-top: 0.4rem;
+		font-size: 0.75rem;
+		font-weight: 700;
+		letter-spacing: 0.12em;
+		line-height: 1.5;
+		text-transform: uppercase;
 	}
 
 	.menu-category h2 {
@@ -185,6 +249,16 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 		border-top: 1px solid
 			color-mix(in srgb, var(--menu-wood) 38%, transparent);
 		list-style: none;
+	}
+
+	.menu-list--included .menu-item__heading {
+		display: block;
+	}
+
+	.menu-category--sides {
+		border-top: 1px solid
+			color-mix(in srgb, var(--menu-wood) 30%, transparent);
+		background: color-mix(in srgb, var(--menu-wood) 7%, var(--menu-cream));
 	}
 
 	.menu-item {
@@ -234,6 +308,19 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 		.menu-intro__content {
 			margin-top: 0;
 			padding-bottom: 0.35rem;
+		}
+
+		.menu-category__heading--priced {
+			display: grid;
+			grid-template-columns: minmax(0, 1fr) auto;
+			gap: 2rem;
+			align-items: end;
+		}
+
+		.menu-category__price {
+			align-items: flex-end;
+			margin-top: 0;
+			text-align: right;
 		}
 
 		.menu-item {
