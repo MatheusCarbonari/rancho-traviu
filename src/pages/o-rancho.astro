@@ -1,6 +1,9 @@
 ---
 import { Image } from 'astro:assets';
 import ranchoEnvironmentImage from '../assets/images/Cerveja gelada no rancho rústico.png';
+import galleryMainImage from '../assets/images/Pagina_Rancho_Geral.png';
+import galleryTableImage from '../assets/images/Pagina_Rancho_Mesa.png';
+import galleryStoveImage from '../assets/images/Pagina_Rancho_Fogao.png';
 import BaseLayout from '../layouts/BaseLayout.astro';
 
 const baseUrl = import.meta.env.BASE_URL.replace(/\/$/, '');
@@ -57,28 +60,42 @@ const suaVisitaUrl = `${baseUrl}/sua-visita`;
 			<header class="gallery__intro">
 				<h2 id="gallery-title">Momentos no Rancho</h2>
 				<p>
-					O ambiente entre árvores e os sabores do fogão a lenha serão reunidos
-					aqui em registros do dia a dia do Rancho.
+					Uma prévia ilustrativa da atmosfera do Rancho: mesas entre árvores,
+					comida no fogão a lenha e bons momentos.
 				</p>
 			</header>
 
 			<div class="gallery__grid">
 				<figure
-					class="gallery__item gallery__item--video"
-					aria-labelledby="gallery-video-caption"
+					class="gallery__item gallery__item--main"
+					aria-labelledby="gallery-main-caption"
 				>
-					<div class="gallery__placeholder">
-						<span>Conteúdo em preparação</span>
+					<div class="gallery__media">
+						<Image
+							src={galleryMainImage}
+							alt="Imagem ilustrativa da área geral do Rancho Traviú, com estrutura rústica, mesas ao ar livre e árvores ao redor."
+							class="gallery__image"
+							layout="full-width"
+							loading="lazy"
+						/>
+						<span>Imagem ilustrativa</span>
 					</div>
-					<figcaption id="gallery-video-caption">Vídeo do Rancho</figcaption>
+					<figcaption id="gallery-main-caption">Vista geral do Rancho</figcaption>
 				</figure>
 
 				<figure
 					class="gallery__item gallery__item--photo"
 					aria-labelledby="gallery-environment-caption"
 				>
-					<div class="gallery__placeholder">
-						<span>Conteúdo em preparação</span>
+					<div class="gallery__media">
+						<Image
+							src={galleryTableImage}
+							alt="Imagem ilustrativa de uma mesa servida no ambiente ao ar livre do Rancho, entre árvores e estruturas de madeira."
+							class="gallery__image"
+							layout="full-width"
+							loading="lazy"
+						/>
+						<span>Imagem ilustrativa</span>
 					</div>
 					<figcaption id="gallery-environment-caption">
 						Fotografia do ambiente
@@ -89,8 +106,15 @@ const suaVisitaUrl = `${baseUrl}/sua-visita`;
 					class="gallery__item gallery__item--photo"
 					aria-labelledby="gallery-gastronomy-caption"
 				>
-					<div class="gallery__placeholder">
-						<span>Conteúdo em preparação</span>
+					<div class="gallery__media">
+						<Image
+							src={galleryStoveImage}
+							alt="Imagem ilustrativa de comida preparada em panelas de barro sobre o fogão a lenha do Rancho."
+							class="gallery__image"
+							layout="full-width"
+							loading="lazy"
+						/>
+						<span>Imagem ilustrativa</span>
 					</div>
 					<figcaption id="gallery-gastronomy-caption">
 						Fotografia da gastronomia
@@ -319,12 +343,11 @@ const suaVisitaUrl = `${baseUrl}/sua-visita`;
 		margin: 0;
 	}
 
-	.gallery__placeholder {
-		display: grid;
+	.gallery__media {
+		position: relative;
 		width: 100%;
 		aspect-ratio: 4 / 3;
-		padding: 1.5rem;
-		place-items: center;
+		overflow: hidden;
 		border: 1px solid
 			color-mix(in srgb, var(--gallery-forest) 28%, transparent);
 		border-radius: 0.25rem 1.25rem 0.25rem 1.25rem;
@@ -333,15 +356,26 @@ const suaVisitaUrl = `${baseUrl}/sua-visita`;
 			var(--gallery-wood) 14%,
 			var(--gallery-cream)
 		);
-		text-align: center;
 	}
 
-	.gallery__item--video .gallery__placeholder {
+	.gallery__item--main .gallery__media {
 		aspect-ratio: 16 / 9;
 	}
 
-	.gallery__placeholder span {
-		color: color-mix(in srgb, var(--gallery-forest) 72%, transparent);
+	.gallery__media :global(.gallery__image) {
+		display: block;
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+	}
+
+	.gallery__media span {
+		position: absolute;
+		right: 1rem;
+		bottom: 1rem;
+		padding: 0.45rem 0.65rem;
+		background: var(--gallery-cream);
+		color: var(--gallery-forest);
 		font-size: 0.7rem;
 		font-weight: 700;
 		letter-spacing: 0.1em;
@@ -510,11 +544,11 @@ const suaVisitaUrl = `${baseUrl}/sua-visita`;
 			align-items: start;
 		}
 
-		.gallery__item--video {
+		.gallery__item--main {
 			grid-row: 1 / span 2;
 		}
 
-		.gallery__item--photo .gallery__placeholder {
+		.gallery__item--photo .gallery__media {
 			aspect-ratio: 16 / 9;
 		}
 
