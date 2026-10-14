@@ -1,4 +1,6 @@
 ---
+import { Image } from 'astro:assets';
+import menuStoveImage from '../assets/images/Pagina_Cardapio_Fogao.png';
 import BaseLayout from '../layouts/BaseLayout.astro';
 ---
 
@@ -9,12 +11,9 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 	<div class="menu-page">
 		<section class="menu-intro" aria-labelledby="menu-title">
 			<div class="menu-intro__inner">
-				<div class="menu-intro__heading">
+				<div class="menu-intro__content">
 					<p class="menu-intro__eyebrow">Sabores do Rancho</p>
 					<h1 id="menu-title">Nosso Cardápio</h1>
-				</div>
-
-				<div class="menu-intro__content">
 					<p class="menu-intro__description">
 						Comida caseira, tradição e o sabor especial do fogão a lenha.
 					</p>
@@ -22,6 +21,17 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 						Cardápio demonstrativo — itens e preços ilustrativos.
 					</p>
 				</div>
+
+				<figure class="menu-intro__media">
+					<Image
+						src={menuStoveImage}
+						alt="Imagem ilustrativa de panelas com comida caseira preparadas sobre um fogão a lenha em ambiente rústico."
+						class="menu-intro__image"
+						layout="full-width"
+						priority
+					/>
+					<figcaption>Imagem ilustrativa</figcaption>
+				</figure>
 			</div>
 		</section>
 
@@ -219,11 +229,10 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
 	.menu-intro__content {
 		max-width: 34rem;
-		margin-top: 2rem;
 	}
 
 	.menu-intro__description {
-		margin: 0;
+		margin: 1.75rem 0 0;
 		font-size: clamp(1.1rem, 4vw, 1.35rem);
 		line-height: 1.65;
 	}
@@ -235,6 +244,39 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 		background: color-mix(in srgb, var(--menu-wood) 10%, transparent);
 		font-size: 0.85rem;
 		line-height: 1.55;
+	}
+
+	.menu-intro__media {
+		position: relative;
+		width: 100%;
+		aspect-ratio: 3 / 2;
+		margin: 2rem 0 0;
+		overflow: hidden;
+		border: 1px solid
+			color-mix(in srgb, var(--menu-forest) 28%, transparent);
+		border-radius: 0.25rem 1.25rem 0.25rem 1.25rem;
+		background: color-mix(in srgb, var(--menu-wood) 14%, var(--menu-cream));
+	}
+
+	.menu-intro__media :global(.menu-intro__image) {
+		display: block;
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+	}
+
+	.menu-intro__media figcaption {
+		position: absolute;
+		right: 1rem;
+		bottom: 1rem;
+		padding: 0.45rem 0.65rem;
+		background: var(--menu-cream);
+		color: var(--menu-forest);
+		font-size: 0.7rem;
+		font-weight: 700;
+		letter-spacing: 0.1em;
+		line-height: 1.5;
+		text-transform: uppercase;
 	}
 
 	.menu-category {
@@ -341,16 +383,19 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 	}
 
 	@media (min-width: 48rem) {
-		.menu-intro__inner {
-			display: grid;
-			grid-template-columns: minmax(0, 1fr) minmax(22rem, 0.85fr);
-			gap: clamp(3rem, 8vw, 7rem);
-			align-items: end;
+		.menu-intro {
+			padding-block: clamp(4rem, 6vw, 5rem);
 		}
 
-		.menu-intro__content {
+		.menu-intro__inner {
+			display: grid;
+			grid-template-columns: repeat(2, minmax(0, 1fr));
+			gap: clamp(3rem, 6vw, 5rem);
+			align-items: center;
+		}
+
+		.menu-intro__media {
 			margin-top: 0;
-			padding-bottom: 0.35rem;
 		}
 
 		.menu-category__heading--priced {
