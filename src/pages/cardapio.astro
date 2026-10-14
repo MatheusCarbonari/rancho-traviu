@@ -4,8 +4,240 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
 <BaseLayout
 	title="Cardápio | Rancho Traviú"
-	description="Conheça o cardápio do Rancho Traviú."
+	description="Conheça uma demonstração do cardápio do Rancho Traviú, com comida caseira e sabores do fogão a lenha."
 >
-	<h1>Cardápio</h1>
-	<p>Conteúdo em preparação.</p>
+	<div class="menu-page">
+		<section class="menu-intro" aria-labelledby="menu-title">
+			<div class="menu-intro__inner">
+				<div class="menu-intro__heading">
+					<p class="menu-intro__eyebrow">Sabores do Rancho</p>
+					<h1 id="menu-title">Nosso Cardápio</h1>
+				</div>
+
+				<div class="menu-intro__content">
+					<p class="menu-intro__description">
+						Comida caseira, tradição e o sabor especial do fogão a lenha.
+					</p>
+					<p class="menu-intro__notice">
+						Cardápio demonstrativo — itens e preços ilustrativos.
+					</p>
+				</div>
+			</div>
+		</section>
+
+		<section class="menu-category" aria-labelledby="wood-stove-title">
+			<div class="menu-category__inner">
+				<header class="menu-category__heading">
+					<p>Sabores tradicionais</p>
+					<h2 id="wood-stove-title">Do fogão a lenha</h2>
+				</header>
+
+				<ul class="menu-list">
+					<li class="menu-item">
+						<div class="menu-item__heading">
+							<h3>Frango caipira</h3>
+							<data value="48.00">R$ 48,00</data>
+						</div>
+						<p>
+							Preparado lentamente, com tempero caseiro e sabor de comida feita
+							no Rancho.
+						</p>
+					</li>
+
+					<li class="menu-item">
+						<div class="menu-item__heading">
+							<h3>Costelinha suína</h3>
+							<data value="46.00">R$ 46,00</data>
+						</div>
+						<p>
+							Macia e bem temperada, com o sabor acolhedor da cozinha do campo.
+						</p>
+					</li>
+
+					<li class="menu-item">
+						<div class="menu-item__heading">
+							<h3>Carne de panela</h3>
+							<data value="44.00">R$ 44,00</data>
+						</div>
+						<p>
+							Cozida devagar, macia e com o sabor tradicional da comida caseira.
+						</p>
+					</li>
+
+					<li class="menu-item">
+						<div class="menu-item__heading">
+							<h3>Batata frita</h3>
+							<data value="45.00">R$ 45,00</data>
+						</div>
+						<p>Porção dourada e crocante para acompanhar a refeição.</p>
+					</li>
+				</ul>
+			</div>
+		</section>
+	</div>
 </BaseLayout>
+
+<style>
+	.menu-page {
+		--menu-forest: #344b36;
+		--menu-cream: #eee5d3;
+		--menu-wood: #936544;
+		--menu-terracotta: #a65f46;
+
+		background: var(--menu-cream);
+		color: var(--menu-forest);
+		font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+			sans-serif;
+	}
+
+	.menu-intro {
+		padding: clamp(3.5rem, 12vw, 6rem) clamp(1.25rem, 6vw, 6rem);
+		border-bottom: 1px solid
+			color-mix(in srgb, var(--menu-wood) 30%, transparent);
+		background: linear-gradient(
+			145deg,
+			color-mix(in srgb, var(--menu-forest) 5%, var(--menu-cream)),
+			var(--menu-cream)
+		);
+	}
+
+	.menu-intro__inner,
+	.menu-category__inner {
+		width: min(100%, 72rem);
+		margin: 0 auto;
+	}
+
+	.menu-intro__eyebrow,
+	.menu-category__heading p {
+		margin: 0 0 1rem;
+		color: var(--menu-wood);
+		font-size: 0.75rem;
+		font-weight: 700;
+		letter-spacing: 0.16em;
+		line-height: 1.5;
+		text-transform: uppercase;
+	}
+
+	.menu-intro h1,
+	.menu-category h2,
+	.menu-item h3 {
+		font-family: Georgia, "Times New Roman", serif;
+	}
+
+	.menu-intro h1 {
+		max-width: 11ch;
+		margin: 0;
+		font-size: clamp(3rem, 13vw, 5.5rem);
+		font-weight: 400;
+		letter-spacing: -0.045em;
+		line-height: 0.98;
+	}
+
+	.menu-intro__content {
+		max-width: 34rem;
+		margin-top: 2rem;
+	}
+
+	.menu-intro__description {
+		margin: 0;
+		font-size: clamp(1.1rem, 4vw, 1.35rem);
+		line-height: 1.65;
+	}
+
+	.menu-intro__notice {
+		margin: 1.75rem 0 0;
+		padding: 0.9rem 1rem;
+		border-left: 0.25rem solid var(--menu-terracotta);
+		background: color-mix(in srgb, var(--menu-wood) 10%, transparent);
+		font-size: 0.85rem;
+		line-height: 1.55;
+	}
+
+	.menu-category {
+		padding: clamp(4rem, 12vw, 7rem) clamp(1.25rem, 6vw, 6rem);
+	}
+
+	.menu-category__inner {
+		max-width: 58rem;
+	}
+
+	.menu-category__heading {
+		padding-left: 1.25rem;
+		border-left: 0.25rem solid var(--menu-terracotta);
+	}
+
+	.menu-category__heading p {
+		margin-bottom: 0.65rem;
+		color: var(--menu-terracotta);
+	}
+
+	.menu-category h2 {
+		margin: 0;
+		font-size: clamp(2.25rem, 9vw, 4rem);
+		font-weight: 400;
+		letter-spacing: -0.035em;
+		line-height: 1.05;
+	}
+
+	.menu-list {
+		margin: clamp(2.5rem, 8vw, 4rem) 0 0;
+		padding: 0;
+		border-top: 1px solid
+			color-mix(in srgb, var(--menu-wood) 38%, transparent);
+		list-style: none;
+	}
+
+	.menu-item {
+		padding: 1.5rem 0;
+		border-bottom: 1px solid
+			color-mix(in srgb, var(--menu-wood) 30%, transparent);
+	}
+
+	.menu-item__heading {
+		display: grid;
+		grid-template-columns: minmax(0, 1fr) auto;
+		gap: 1rem;
+		align-items: baseline;
+	}
+
+	.menu-item h3 {
+		margin: 0;
+		font-size: clamp(1.3rem, 5vw, 1.65rem);
+		font-weight: 400;
+		line-height: 1.2;
+	}
+
+	.menu-item data {
+		color: var(--menu-terracotta);
+		font-size: 1rem;
+		font-weight: 700;
+		line-height: 1.4;
+		white-space: nowrap;
+	}
+
+	.menu-item > p {
+		max-width: 42rem;
+		margin: 0.65rem 0 0;
+		color: color-mix(in srgb, var(--menu-forest) 82%, transparent);
+		font-size: 0.95rem;
+		line-height: 1.65;
+	}
+
+	@media (min-width: 48rem) {
+		.menu-intro__inner {
+			display: grid;
+			grid-template-columns: minmax(0, 1fr) minmax(22rem, 0.85fr);
+			gap: clamp(3rem, 8vw, 7rem);
+			align-items: end;
+		}
+
+		.menu-intro__content {
+			margin-top: 0;
+			padding-bottom: 0.35rem;
+		}
+
+		.menu-item {
+			padding: 1.75rem 0;
+		}
+	}
+</style>
